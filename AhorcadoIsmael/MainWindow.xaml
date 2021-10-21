@@ -9,27 +9,42 @@
 
 
     <Grid>
+        
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
+        <DockPanel Grid.Column="0" Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Dificultad" x:Name="botonMenu">
+                    <MenuItem Header="_Facil" Click="facilMenuClick" />
+                    <MenuItem Header="_Medio" Click="medioMenuClick"/>
+                    <MenuItem Header="_Dificil" Click="dificilMenuClick"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        
+        
 
-        <Border Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="2">
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="5:00" FontSize="50px" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2">
+            <TextBlock x:Name="countDownTextBlock" Grid.Column="0" Grid.Row="1" FontSize="50px" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+
         </Border>
+           
+        
 
-        <Image Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Source="assets/0.jpg" Stretch="Fill"></Image>
+        <Image Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Source="assets/0.jpg" Stretch="Fill"></Image>
 
-        <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Horizontal">
-            <Button  Margin="10" Width="95">Nueva partida</Button>
+        <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal">
             <Button Margin="10" Width="95">Rendirse</Button>
         </StackPanel>
         
