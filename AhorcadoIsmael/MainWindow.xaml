@@ -29,7 +29,9 @@
                     <MenuItem Header="_Facil" Click="facilMenuClick" />
                     <MenuItem Header="_Medio" Click="medioMenuClick"/>
                     <MenuItem Header="_Dificil" Click="dificilMenuClick"/>
+                    <MenuItem Header="_Usuario" Click="usuarioMenuClick" Visibility="Collapsed" x:Name="menuUsuarioMenu"/>
                     <MenuItem Header="_Desarrollador" Click="desarrolladorMenuClick" Visibility="Collapsed" x:Name="menuDesarrolladorMenu"/>
+                    
                 </MenuItem>
                 <MenuItem Header="_Ayuda" x:Name="ayudaMenu">
                     <MenuItem Header="_Insertar Codigo" Click="codigoClick"/>
