@@ -147,6 +147,7 @@ namespace AhorcadoIsmael
 
 
             AñadirPalabras frm = new AñadirPalabras();
+            
             frm.Show();
 
         }
