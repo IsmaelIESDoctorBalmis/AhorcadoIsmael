@@ -35,6 +35,22 @@ namespace AhorcadoIsmael
 
             timer.Tick += timer_Tick;
 
+            List<char> Teclado = Enumerable.Range('A', 'Z' - 'A' + 1).Select(i => (Char)i).ToList<Char>();
+            Teclado.Insert(14, 'Ñ');
+
+            foreach(var letra in Teclado)
+            {
+                Button letras = new Button();
+                letras.Tag = letra;
+                TextBlock texto = new TextBlock();
+                texto.Text = letra.ToString();
+                Viewbox box = new Viewbox();
+                box.Child = texto;
+                letras.Content = box;
+                contenedorTeclado.Children.Add(letras);
+
+            }
+
 
 
 
@@ -42,7 +58,7 @@ namespace AhorcadoIsmael
 
         void Contador()
         {
-            // contador = TimeSpan.FromSeconds(contador).TotalSeconds;
+            
 
             botonMenu.IsEnabled = false;
 
@@ -104,11 +120,62 @@ namespace AhorcadoIsmael
         }
 
 
+        private void desarrolladorMenuClick(object sender, RoutedEventArgs e)
+        {
+
+            MessageBox.Show("Has seleccionado la dificultad DESARROLLADOR");
+
+            contador = 15;
+
+            Contador();
+        }
 
 
 
+        private void insertarCodigoClick(object sender, RoutedEventArgs e)
+        {
+
+            if (campoCodigoTextBox.Text == "javi tu siempre molas")
+            {
+                MessageBox.Show("Has activado el modo desarrollador");
+
+                campoCodigoTextBox.Text = "";
+
+                codigosGrid.Visibility = Visibility.Hidden;
+
+                menuDesarrolladorMenu.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                MessageBox.Show("Este código no existe");
+                campoCodigoTextBox.Text = "";
+                codigosGrid.Visibility = Visibility.Hidden;
+            }
+
+            
+
+        }
 
 
+        private void codigoClick(object sender, RoutedEventArgs e)
+        {
+
+
+         codigosGrid.Visibility = Visibility.Visible;
+
+                
+        }
+
+        private void rendirseButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            timer.Stop();
+            botonMenu.IsEnabled = true;
+
+            countDownTextBlock.Text = "";
+
+        }
     }
 
 
