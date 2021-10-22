@@ -18,7 +18,7 @@ namespace AhorcadoIsmael
     /// <summary>
     /// Lógica de interacción para AñadirPalabras.xaml
     /// </summary>
-    public partial class AñadirPalabras : Page
+    public partial class AñadirPalabras : Window
     {
         public AñadirPalabras()
         {

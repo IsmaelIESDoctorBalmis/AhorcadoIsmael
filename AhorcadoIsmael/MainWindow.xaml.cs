@@ -146,9 +146,8 @@ namespace AhorcadoIsmael
         {
 
 
-            uc1 = new UserControl1();
-            this.Controls.Add(uc1);
-            uc1.Location = new System.Drawing.Point(20, 73);
+            AñadirPalabras frm = new AñadirPalabras();
+            frm.Show();
 
         }
 
@@ -165,24 +164,6 @@ namespace AhorcadoIsmael
                 codigosGrid.Visibility = Visibility.Hidden;
 
                 menuDesarrolladorMenu.Visibility = Visibility.Visible;
-
-            }
-            else
-            {
-                MessageBox.Show("Este código no existe");
-                campoCodigoTextBox.Text = "";
-                codigosGrid.Visibility = Visibility.Hidden;
-            }
-
-
-            if (campoCodigoTextBox.Text == "dejame jugar")
-            {
-                MessageBox.Show("Has activado el modo palabras de usuario");
-
-                campoCodigoTextBox.Text = "";
-
-                codigosGrid.Visibility = Visibility.Hidden;
-
                 menuUsuarioMenu.Visibility = Visibility.Visible;
 
             }
@@ -192,6 +173,8 @@ namespace AhorcadoIsmael
                 campoCodigoTextBox.Text = "";
                 codigosGrid.Visibility = Visibility.Hidden;
             }
+
+ 
 
 
 
