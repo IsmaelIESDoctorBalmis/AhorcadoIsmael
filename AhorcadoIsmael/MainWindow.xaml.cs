@@ -136,10 +136,10 @@ namespace AhorcadoIsmael
             MessageBox.Show("Has seleccionado el modo usuario");
 
             insertarPalabrasUsuario();
-
+            /*
             contador = 180;
 
-            Contador();
+            Contador();*/
         }
 
         private void insertarPalabrasUsuario()

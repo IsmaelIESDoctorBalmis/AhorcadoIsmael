@@ -18,7 +18,7 @@
 
         <Button x:Name="palabraAñadirButton">Añadir palabra</Button>
 
-        <Button x:Name="volverJuegoButton">Volver al juego</Button>
+        <Button x:Name="volverJuegoButton" Click="volverJuegoButton_Click">Volver al juego</Button>
         
         
     </StackPanel>
