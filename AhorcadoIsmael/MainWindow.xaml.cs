@@ -40,6 +40,7 @@ namespace AhorcadoIsmael
         {
             InitializeComponent();
 
+            rendirseButton.IsEnabled = false;
 
             timer.Interval = TimeSpan.FromSeconds(1);
 
@@ -52,6 +53,7 @@ namespace AhorcadoIsmael
             {
                 Button letras = new Button();
                 letras.Tag = letra;
+                letras.IsEnabled = false;
                 TextBlock texto = new TextBlock();
                 texto.Text = letra.ToString();
                 Viewbox box = new Viewbox();
@@ -140,27 +142,40 @@ namespace AhorcadoIsmael
             Contador();
         }
 
+
+        String pAdivina;
         public void partida()
         {
+            foreach (Button b in contenedorTeclado.Children)
+            {
+                b.IsEnabled = true;
+            }
+
+
+            int numeroRan = numeroRandom();
+
+            numeroRan = numeroRan - 1;
+
+            pAdivina = Palabras.palabrasDificiles[numeroRan];
+            int longitudCadena = pAdivina.Length;
+            pAdivina = pAdivina.ToUpper();
+            arr = pAdivina.ToCharArray(0, longitudCadena);
 
             if (partidaEmpezada == false)
             {
 
-                int numeroRan = numeroRandom();
 
-                numeroRan = numeroRan - 1;
 
-                String pAdivina = Palabras.palabrasDificiles[numeroRan];
-                int longitudCadena = pAdivina.Length;
-                pAdivina = pAdivina.ToUpper();
-                arr = pAdivina.ToCharArray(0, longitudCadena);
-
-               
+                rendirseButton.IsEnabled = true;
                 scroll.Content = palabra;
                 scroll.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
                 scroll.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
                 //Para los scrollview debemos poner los
                 PalabraWrapPanel.Children.Add(scroll);
+
+                partidaEmpezada = true;
+
+            }
 
                 for (int i = 0; i < arr.Length; i++)
                 {
@@ -180,38 +195,67 @@ namespace AhorcadoIsmael
 
                 
 
-                partidaEmpezada = true;
-            }
+            
             
 
            
             
         }
 
+        public void partidaTerminada()
+        {
+            timer.Stop();
+            botonMenu.IsEnabled = true;
+
+            countDownTextBlock.Text = "";
+
+
+            sb.Clear();
+            regenerarPalabra = sb.Append("").ToString();
+            palabra.Text = regenerarPalabra;
+            contadorImagen = 0;
+            imagenAhorcado.Source = GetStageImage();
+
+            rendirseButton.IsEnabled = false;
+            foreach (Button b in contenedorTeclado.Children)
+            {
+                b.IsEnabled = false;
+            }
+
+
+
+
+        }
+
+
+        int contadorImagen = 0;
+
+        string regenerarPalabra = "";
         public void comprobar()
         {
             char tecla = Char.Parse(teclaPulsada);
+
+            bool encontrada = false;
             for (int i = 0; i < arr.Length; i++)
             {
 
                 //MessageBox.Show(arr[i].ToString() + " " + tecla.ToString());
 
-
                 if (arr[i].ToString() == tecla.ToString())
                 {
-                   // MessageBox.Show("Se ha encontrado igualdad");
-                    
-                    
+                    // MessageBox.Show("Se ha encontrado igualdad");
+
+                    encontrada = true;
 
                     arr2[i] = tecla;
 
                 }
 
-               
-               
 
             }
-            string regenerarPalabra = "";
+
+
+
             sb.Clear();
             for (int j = 0; j < arr2.Length; j++)
             {
@@ -223,7 +267,39 @@ namespace AhorcadoIsmael
 
             palabra.Text = regenerarPalabra;
 
-            
+
+            if (!encontrada)
+            {
+                if (contadorImagen <= 9)
+                {
+                    contadorImagen++;
+                    imagenAhorcado.Source = GetStageImage();
+                }
+                else
+                {
+                    MessageBox.Show("Has perdido");
+                    MessageBox.Show("La palabra era " + pAdivina);
+                    partidaTerminada();
+                }
+
+
+            }
+
+            if (palabra.Text == pAdivina)
+            {
+                MessageBox.Show("Has acertado!!!");
+                partidaTerminada();
+
+            }
+
+        }
+
+        public BitmapImage GetStageImage()
+        {
+            return new BitmapImage(
+                new Uri(System.IO.Path.Combine(
+                    Environment.CurrentDirectory,
+                    "../../assets/" + contadorImagen + ".jpg")));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -323,10 +399,9 @@ namespace AhorcadoIsmael
         private void rendirseButton_Click(object sender, RoutedEventArgs e)
         {
 
-            timer.Stop();
-            botonMenu.IsEnabled = true;
-
-            countDownTextBlock.Text = "";
+            MessageBox.Show("Joooooo, por que te has rendido?");
+            MessageBox.Show("La palabra era " + pAdivina);
+            partidaTerminada();
 
         }
 

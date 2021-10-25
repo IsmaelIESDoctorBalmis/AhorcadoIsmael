@@ -68,7 +68,7 @@
 
         </WrapPanel>
 
-        <Image Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Source="assets/0.jpg" Stretch="Fill"></Image>
+        <Image Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" x:Name="imagenAhorcado" Source="assets/0.jpg" Stretch="Fill"></Image>
 
         <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal">
             <Button x:Name="rendirseButton" Margin="10" Width="95" Click="rendirseButton_Click">Rendirse</Button>
