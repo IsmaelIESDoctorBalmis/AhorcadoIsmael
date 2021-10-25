@@ -16,7 +16,7 @@
         </TextBox>
 
 
-        <Button x:Name="palabraAñadirButton" Width="100px">Añadir palabra</Button>
+        <Button x:Name="palabraAñadirButton" Width="100px" Click="palabraAñadirButton_Click">Añadir palabra</Button>
 
         <Button x:Name="volverJuegoButton" Width="100px" Margin="20" Click="volverJuegoButton_Click">Volver al juego</Button>
         

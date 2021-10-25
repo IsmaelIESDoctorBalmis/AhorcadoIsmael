@@ -9,8 +9,14 @@ namespace AhorcadoIsmael
     class Palabras
     {
 
-        static List<String> palabrasFaciles = new List<string>(){ 
-        
+        public Palabras()
+        {
+        }
+
+
+
+        public static List<String> palabrasFaciles = new List<string>(){
+
             "caca",
             "perro",
             "mesa"
@@ -18,7 +24,7 @@ namespace AhorcadoIsmael
         };
 
 
-        static List<String> palabrasMedias = new List<string>(){
+        public static List<String> palabrasMedias = new List<string>(){
 
             "mochila",
             "programacion",
@@ -26,7 +32,7 @@ namespace AhorcadoIsmael
 
         };
 
-        static List<String> palabrasDificiles = new List<string>(){
+        public static List<String> palabrasDificiles = new List<string>(){
 
             "esternocleidomastoideo",
             "estrabismo",
@@ -35,12 +41,9 @@ namespace AhorcadoIsmael
 
         };
 
-        static List<String> palabrasUsuario = new List<string>(){
-
-            
+        public static List<String> palabrasUsuario = new List<string>();
 
 
-        };
 
 
     }

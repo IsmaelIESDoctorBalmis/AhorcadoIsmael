@@ -29,5 +29,16 @@ namespace AhorcadoIsmael
         {
             this.Close();
         }
+
+        private void palabraAñadirButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (!palabraAñadirTextBox.Text.Equals(""))
+            {
+                Palabras.palabrasUsuario.Add(palabraAñadirTextBox.Text);
+            }
+
+
+        }
     }
 }

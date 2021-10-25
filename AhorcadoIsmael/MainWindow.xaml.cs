@@ -23,6 +23,16 @@ namespace AhorcadoIsmael
     {
         double contador = 180;
         DispatcherTimer timer = new DispatcherTimer();
+        string teclaPulsada;
+
+        TextBlock palabra = new TextBlock();
+        ScrollViewer scroll = new ScrollViewer();
+
+        bool partidaEmpezada = false;
+        char[] arr;
+        char[] arr2;
+
+        StringBuilder sb = new StringBuilder();
 
 
 
@@ -38,7 +48,7 @@ namespace AhorcadoIsmael
             List<char> Teclado = Enumerable.Range('A', 'Z' - 'A' + 1).Select(i => (Char)i).ToList<Char>();
             Teclado.Insert(14, 'Ñ');
 
-            foreach(var letra in Teclado)
+            foreach (var letra in Teclado)
             {
                 Button letras = new Button();
                 letras.Tag = letra;
@@ -48,17 +58,23 @@ namespace AhorcadoIsmael
                 box.Child = texto;
                 letras.Content = box;
                 contenedorTeclado.Children.Add(letras);
+                letras.Click += Button_Click;
 
             }
 
+
+            
 
 
 
         }
 
+
+
+
         void Contador()
         {
-            
+
 
             botonMenu.IsEnabled = false;
 
@@ -66,7 +82,7 @@ namespace AhorcadoIsmael
 
         }
 
-        
+
 
 
         void timer_Tick(object sender, EventArgs e)
@@ -74,6 +90,7 @@ namespace AhorcadoIsmael
 
 
             contador = TimeSpan.FromSeconds(contador).TotalSeconds;
+
             if (contador != 0)
             {
                 contador = contador - 1;
@@ -114,11 +131,126 @@ namespace AhorcadoIsmael
 
             MessageBox.Show("Has seleccionado la dificultad DIFICIL");
 
+           
+
+            partida();
+
             contador = 60;
 
             Contador();
         }
 
+        public void partida()
+        {
+
+            if (partidaEmpezada == false)
+            {
+
+                int numeroRan = numeroRandom();
+
+                numeroRan = numeroRan - 1;
+
+                String pAdivina = Palabras.palabrasDificiles[numeroRan];
+                int longitudCadena = pAdivina.Length;
+                pAdivina = pAdivina.ToUpper();
+                arr = pAdivina.ToCharArray(0, longitudCadena);
+
+               
+                scroll.Content = palabra;
+                scroll.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+                scroll.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                //Para los scrollview debemos poner los
+                PalabraWrapPanel.Children.Add(scroll);
+
+                for (int i = 0; i < arr.Length; i++)
+                {
+
+                    palabra.Text = sb.Append("_").ToString();
+
+
+                    palabra.FontSize = 40;
+
+
+
+                }
+
+
+
+                arr2 = palabra.Text.ToCharArray(0, palabra.Text.Length);
+
+                
+
+                partidaEmpezada = true;
+            }
+            
+
+           
+            
+        }
+
+        public void comprobar()
+        {
+            char tecla = Char.Parse(teclaPulsada);
+            for (int i = 0; i < arr.Length; i++)
+            {
+
+                //MessageBox.Show(arr[i].ToString() + " " + tecla.ToString());
+
+
+                if (arr[i].ToString() == tecla.ToString())
+                {
+                   // MessageBox.Show("Se ha encontrado igualdad");
+                    
+                    
+
+                    arr2[i] = tecla;
+
+                }
+
+               
+               
+
+            }
+            string regenerarPalabra = "";
+            sb.Clear();
+            for (int j = 0; j < arr2.Length; j++)
+            {
+
+                regenerarPalabra = sb.Append(arr2[j]).ToString();
+                
+
+            }
+
+            palabra.Text = regenerarPalabra;
+
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            Button boton = (Button)sender;
+            boton.IsEnabled = false;
+            teclaPulsada = boton.Tag.ToString();
+            comprobar();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Enter)
+            {
+                foreach (Button b in contenedorTeclado.Children)
+                {
+                    if (b.Tag.ToString() == e.Key.ToString())
+                    {
+                        b.IsEnabled = false;
+                        teclaPulsada = b.Tag.ToString();
+                        comprobar();
+                    }
+                }
+            }
+            
+        }
 
         private void desarrolladorMenuClick(object sender, RoutedEventArgs e)
         {
@@ -136,10 +268,7 @@ namespace AhorcadoIsmael
             MessageBox.Show("Has seleccionado el modo usuario");
 
             insertarPalabrasUsuario();
-            /*
-            contador = 180;
 
-            Contador();*/
         }
 
         private void insertarPalabrasUsuario()
@@ -147,7 +276,7 @@ namespace AhorcadoIsmael
 
 
             AñadirPalabras frm = new AñadirPalabras();
-            
+
             frm.Show();
 
         }
@@ -175,7 +304,7 @@ namespace AhorcadoIsmael
                 codigosGrid.Visibility = Visibility.Hidden;
             }
 
- 
+
 
 
 
@@ -186,9 +315,9 @@ namespace AhorcadoIsmael
         {
 
 
-         codigosGrid.Visibility = Visibility.Visible;
+            codigosGrid.Visibility = Visibility.Visible;
 
-                
+
         }
 
         private void rendirseButton_Click(object sender, RoutedEventArgs e)
@@ -200,7 +329,20 @@ namespace AhorcadoIsmael
             countDownTextBlock.Text = "";
 
         }
+
+        public int numeroRandom()
+        {
+            int numero = 0;
+
+            numero = new Random().Next(1, 4);
+
+
+
+            return numero;
+        }
+
+        
+
+
     }
-
-
 }

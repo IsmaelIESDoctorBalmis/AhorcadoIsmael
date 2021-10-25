@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AhorcadoIsmael"
         mc:Ignorable="d"
-        Title="Ahorcado" Height="450" Width="800" MinHeight="450" MinWidth="800">
+        Title="Ahorcado" Height="450" Width="800" MinHeight="450" MinWidth="800" KeyDown="Window_KeyDown">
 
 
     <Grid>
@@ -63,8 +63,10 @@
             <TextBlock x:Name="countDownTextBlock" Grid.Column="0" Grid.Row="1" FontSize="50px" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
 
         </Border>
-           
-        
+
+        <WrapPanel Grid.Row="1" Grid.Column="1" x:Name="PalabraWrapPanel">
+
+        </WrapPanel>
 
         <Image Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Source="assets/0.jpg" Stretch="Fill"></Image>
 
