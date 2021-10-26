@@ -161,7 +161,7 @@ namespace AhorcadoIsmael
             pAdivina = pAdivina.ToUpper();
             arr = pAdivina.ToCharArray(0, longitudCadena);
 
-            if (partidaEmpezada == false)
+            if (!partidaEmpezada)
             {
 
 
@@ -239,11 +239,11 @@ namespace AhorcadoIsmael
             for (int i = 0; i < arr.Length; i++)
             {
 
-                //MessageBox.Show(arr[i].ToString() + " " + tecla.ToString());
+               
 
                 if (arr[i].ToString() == tecla.ToString())
                 {
-                    // MessageBox.Show("Se ha encontrado igualdad");
+                   
 
                     encontrada = true;
 
