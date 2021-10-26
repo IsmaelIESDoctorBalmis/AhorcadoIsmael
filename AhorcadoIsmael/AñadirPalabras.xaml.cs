@@ -20,6 +20,8 @@ namespace AhorcadoIsmael
     /// </summary>
     public partial class AñadirPalabras : Window
     {
+        int contadorPalabras = 0;
+        
         public AñadirPalabras()
         {
             InitializeComponent();
@@ -33,10 +35,15 @@ namespace AhorcadoIsmael
         private void palabraAñadirButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (!palabraAñadirTextBox.Text.Equals(""))
+            if (!palabraAñadirTextBox.Text.Equals("") && contadorPalabras != 3)
             {
+                contadorPalabras++;
                 Palabras.palabrasUsuario.Add(palabraAñadirTextBox.Text);
+                palabraAñadirTextBox.Text = "";
+                MessageBox.Show("Llevas " + contadorPalabras + " palabras añadidas de 3");
             }
+
+           
 
 
         }

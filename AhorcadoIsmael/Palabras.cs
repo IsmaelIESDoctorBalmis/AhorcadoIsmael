@@ -9,13 +9,13 @@ namespace AhorcadoIsmael
     class Palabras
     {
 
-        public Palabras()
+        protected Palabras()
         {
         }
 
 
 
-        public static List<String> palabrasFaciles = new List<string>(){
+        public static readonly List<String> palabrasFaciles = new List<string>(){
 
             "caca",
             "perro",
@@ -24,7 +24,7 @@ namespace AhorcadoIsmael
         };
 
 
-        public static List<String> palabrasMedias = new List<string>(){
+        public static readonly List<String> palabrasMedias = new List<string>(){
 
             "mochila",
             "programacion",
@@ -32,7 +32,7 @@ namespace AhorcadoIsmael
 
         };
 
-        public static List<String> palabrasDificiles = new List<string>(){
+        public static readonly List<String> palabrasDificiles = new List<string>(){
 
             "esternocleidomastoideo",
             "estrabismo",

@@ -113,6 +113,17 @@ namespace AhorcadoIsmael
 
             MessageBox.Show("Has seleccionado la dificultad FACIL");
 
+            int numeroRan = numeroRandom();
+
+            numeroRan = numeroRan - 1;
+
+            pAdivina = Palabras.palabrasFaciles[numeroRan];
+            int longitudCadena = pAdivina.Length;
+            pAdivina = pAdivina.ToUpper();
+            arr = pAdivina.ToCharArray(0, longitudCadena);
+
+            partida();
+
             contador = 300;
 
             Contador();
@@ -122,6 +133,18 @@ namespace AhorcadoIsmael
         {
 
             MessageBox.Show("Has seleccionado la dificultad MEDIA");
+
+            int numeroRan = numeroRandom();
+
+            numeroRan = numeroRan - 1;
+
+            pAdivina = Palabras.palabrasMedias[numeroRan];
+            int longitudCadena = pAdivina.Length;
+            pAdivina = pAdivina.ToUpper();
+            arr = pAdivina.ToCharArray(0, longitudCadena);
+
+            partida();
+
 
             contador = 180;
 
@@ -133,7 +156,14 @@ namespace AhorcadoIsmael
 
             MessageBox.Show("Has seleccionado la dificultad DIFICIL");
 
-           
+            int numeroRan = numeroRandom();
+
+            numeroRan = numeroRan - 1;
+
+            pAdivina = Palabras.palabrasDificiles[numeroRan];
+            int longitudCadena = pAdivina.Length;
+            pAdivina = pAdivina.ToUpper();
+            arr = pAdivina.ToCharArray(0, longitudCadena);
 
             partida();
 
@@ -152,14 +182,7 @@ namespace AhorcadoIsmael
             }
 
 
-            int numeroRan = numeroRandom();
-
-            numeroRan = numeroRan - 1;
-
-            pAdivina = Palabras.palabrasDificiles[numeroRan];
-            int longitudCadena = pAdivina.Length;
-            pAdivina = pAdivina.ToUpper();
-            arr = pAdivina.ToCharArray(0, longitudCadena);
+            
 
             if (!partidaEmpezada)
             {
@@ -313,7 +336,7 @@ namespace AhorcadoIsmael
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key != Key.Enter)
+            if (e.Key != Key.Enter && partidaEmpezada)
             {
                 foreach (Button b in contenedorTeclado.Children)
                 {
@@ -345,15 +368,30 @@ namespace AhorcadoIsmael
 
             insertarPalabrasUsuario();
 
+
+            int numeroRan = numeroRandom();
+
+            numeroRan = numeroRan - 1;
+
+            pAdivina = Palabras.palabrasUsuario[numeroRan];
+            int longitudCadena = pAdivina.Length;
+            pAdivina = pAdivina.ToUpper();
+            arr = pAdivina.ToCharArray(0, longitudCadena);
+
+            partida();
+
+            contador = 180;
+
+            Contador();
+
         }
 
         private void insertarPalabrasUsuario()
         {
 
-
             AñadirPalabras frm = new AñadirPalabras();
 
-            frm.Show();
+            frm.ShowDialog();
 
         }
 
