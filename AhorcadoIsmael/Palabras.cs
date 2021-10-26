@@ -17,9 +17,9 @@ namespace AhorcadoIsmael
 
         public static readonly List<String> palabrasFaciles = new List<string>(){
 
-            "caca",
+            "huelepestes",
             "perro",
-            "mesa"
+            "chupapija"
 
         };
 
