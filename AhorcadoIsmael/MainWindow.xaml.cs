@@ -32,6 +32,7 @@ namespace AhorcadoIsmael
         char[] arr;
         char[] arr2;
 
+
         StringBuilder sb = new StringBuilder();
 
 
@@ -340,7 +341,7 @@ namespace AhorcadoIsmael
             {
                 foreach (Button b in contenedorTeclado.Children)
                 {
-                    if (b.Tag.ToString() == e.Key.ToString())
+                    if (b.Tag.ToString() == e.Key.ToString() && b.IsEnabled)
                     {
                         b.IsEnabled = false;
                         teclaPulsada = b.Tag.ToString();
