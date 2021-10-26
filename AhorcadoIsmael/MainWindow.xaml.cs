@@ -65,7 +65,7 @@ namespace AhorcadoIsmael
             }
 
 
-            
+
 
 
 
@@ -182,7 +182,7 @@ namespace AhorcadoIsmael
             }
 
 
-            
+
 
             if (!partidaEmpezada)
             {
@@ -200,29 +200,29 @@ namespace AhorcadoIsmael
 
             }
 
-                for (int i = 0; i < arr.Length; i++)
-                {
+            for (int i = 0; i < arr.Length; i++)
+            {
 
-                    palabra.Text = sb.Append("_").ToString();
-
-
-                    palabra.FontSize = 40;
+                palabra.Text = sb.Append("_").ToString();
 
 
-
-                }
+                palabra.FontSize = 40;
 
 
 
-                arr2 = palabra.Text.ToCharArray(0, palabra.Text.Length);
+            }
 
-                
 
-            
-            
 
-           
-            
+            arr2 = palabra.Text.ToCharArray(0, palabra.Text.Length);
+
+
+
+
+
+
+
+
         }
 
         public void partidaTerminada()
@@ -262,11 +262,11 @@ namespace AhorcadoIsmael
             for (int i = 0; i < arr.Length; i++)
             {
 
-               
+
 
                 if (arr[i].ToString() == tecla.ToString())
                 {
-                   
+
 
                     encontrada = true;
 
@@ -284,7 +284,7 @@ namespace AhorcadoIsmael
             {
 
                 regenerarPalabra = sb.Append(arr2[j]).ToString();
-                
+
 
             }
 
@@ -348,7 +348,7 @@ namespace AhorcadoIsmael
                     }
                 }
             }
-            
+
         }
 
         private void desarrolladorMenuClick(object sender, RoutedEventArgs e)
@@ -454,7 +454,7 @@ namespace AhorcadoIsmael
             return numero;
         }
 
-        
+
 
 
     }
