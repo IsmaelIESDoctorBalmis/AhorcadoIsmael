@@ -299,7 +299,7 @@ namespace AhorcadoIsmael
                 if (contadorImagen <= 9)
                 {
                     contadorImagen++;
-                    imagenAhorcado.Source = GetStageImage("../../assets/" + contadorImagen + ".jpg");
+                    imagenAhorcado.Source = GetStageImage("assets/" + contadorImagen + ".jpg");
                 }
                 else
                 {
@@ -324,9 +324,7 @@ namespace AhorcadoIsmael
         public BitmapImage GetStageImage(String url)
         {
             return new BitmapImage(
-                new Uri(System.IO.Path.Combine(
-                    Environment.CurrentDirectory,
-                    url)));
+                new Uri(url,UriKind.Relative));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
