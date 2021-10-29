@@ -184,13 +184,14 @@ namespace AhorcadoIsmael
 
 
 
+            rendirseButton.IsEnabled = true;
+
+
 
             if (!partidaEmpezada)
             {
 
 
-
-                rendirseButton.IsEnabled = true;
                 scroll.Content = palabra;
                 scroll.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
                 scroll.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
@@ -238,9 +239,10 @@ namespace AhorcadoIsmael
             regenerarPalabra = sb.Append("").ToString();
             palabra.Text = regenerarPalabra;
             contadorImagen = 0;
-            imagenAhorcado.Source = GetStageImage();
+            imagenAhorcado.Source = GetStageImage("../../assets/" + contadorImagen + ".jpg");
 
             rendirseButton.IsEnabled = false;
+            
             foreach (Button b in contenedorTeclado.Children)
             {
                 b.IsEnabled = false;
@@ -297,7 +299,7 @@ namespace AhorcadoIsmael
                 if (contadorImagen <= 9)
                 {
                     contadorImagen++;
-                    imagenAhorcado.Source = GetStageImage();
+                    imagenAhorcado.Source = GetStageImage("../../assets/" + contadorImagen + ".jpg");
                 }
                 else
                 {
@@ -318,12 +320,13 @@ namespace AhorcadoIsmael
 
         }
 
-        public BitmapImage GetStageImage()
+        
+        public BitmapImage GetStageImage(String url)
         {
             return new BitmapImage(
                 new Uri(System.IO.Path.Combine(
                     Environment.CurrentDirectory,
-                    "../../assets/" + contadorImagen + ".jpg")));
+                    url)));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
